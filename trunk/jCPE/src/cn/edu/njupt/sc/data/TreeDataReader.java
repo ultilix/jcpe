@@ -61,7 +61,7 @@ public class TreeDataReader implements DataReader {
 	 * 
 	 * @param arg
 	 *            parameter path.
-	 * @return parameter's value
+	 * @return parameter's value;This method does not return null.
 	 */
 	@Override
 	public String read(String arg) {
