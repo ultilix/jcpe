@@ -35,6 +35,11 @@ public class TreeDataReader implements DataReader {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see cn.edu.njupt.sc.data.DataReader#setSource(java.lang.String)
+	 */
 	@Override
 	public void setSource(String file) {
 		File f = new File(file);
@@ -46,6 +51,11 @@ public class TreeDataReader implements DataReader {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see cn.edu.njupt.sc.data.DataReader#setSource(java.io.File)
+	 */
 	@Override
 	public void setSource(File file) {
 		SAXReader saxReader = new SAXReader();
@@ -65,10 +75,10 @@ public class TreeDataReader implements DataReader {
 	 */
 	@Override
 	public String read(String arg) {
-		// Get "InternetGatewayDevice" element.
-		Element IGD = dataSource.getRootElement();
+		// Get root element.
+		Element root = dataSource.getRootElement();
 
-		Element temp = IGD;
+		Element temp = root;
 		String[] args = new Interpreter().Command2String(arg);
 		for (String s : args) {
 			temp = temp.element(s);
@@ -77,19 +87,19 @@ public class TreeDataReader implements DataReader {
 	}
 
 	/**
-	 * Query specific parameter's "Write" attribute from given path.
+	 * Query specific parameter's attribute from given path.
 	 * 
 	 * @param arg
 	 *            parameter path
-	 * @return attribute value of "Write"
+	 * @return attribute value
 	 */
 	@Override
 	public String readAttribute(String arg, String attribute) {
 
-		// Get "InternetGatewayDevice" element.
-		Element IGD = dataSource.getRootElement();
+		// Get root element.
+		Element root = dataSource.getRootElement();
 
-		Element temp = IGD;
+		Element temp = root;
 		String[] args = new Interpreter().Command2String(arg);
 		for (String s : args) {
 			temp = temp.element(s);

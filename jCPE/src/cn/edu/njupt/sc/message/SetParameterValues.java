@@ -22,11 +22,14 @@ public class SetParameterValues extends Message {
 	}	
 
 	///*
-	  @Override 
+	/**
+	 * This method is just used for demonstrate in GUI.  
+	 */
+	@Override 
 	  protected NameValue[] parseBody(SOAPBodyElement body, SOAPFactory f)throws SOAPException { 
-		  Node parameterList=body.getFirstChild(); NodeList
-	  nodeList = parameterList.getChildNodes(); 
-		  int l=nodeList.getLength();
+	  Node parameterList=body.getFirstChild(); 
+	  NodeList  nodeList = parameterList.getChildNodes(); 
+	  int l=nodeList.getLength();
 	  for (int i = 0; i < l; i++) { Node ParameterValueStruct =
 	  nodeList.item(i); 
 	  gui.insertDate("修改第" + (i + 1) + "个参数：" + "\n");
