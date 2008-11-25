@@ -22,21 +22,30 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
+import cn.edu.njupt.sc.data.TreeDataReader;
+
 //import cn.edu.njupt.sc.GUI.CPEFrame;
 
 public class CPEClient {
 	static {
-		URL = "http://localhost:8080/ACS/ACSServlet";
-//		URL="http://10.20.66.2:8080/ACS/ACSServlet";
+		// URL = "http://localhost:8080/ACS/ACSServlet";
+		// URL="http://10.20.66.2:8080/ACS/ACSServlet";
 		// Create an instance of HttpClient.
 		client = new HttpClient();
 	}
 
-//	public CPEClient(CPEFrame gui) {
-//		this.gui = gui;
-//	}
-	public CPEClient(){
-		
+	// public CPEClient(CPEFrame gui) {
+	// this.gui = gui;
+	// }
+	public CPEClient() {
+
+		TreeDataReader reader = new TreeDataReader();
+		reader.setSource("Data.xml");
+		this.URL = reader.read("InternetGatewayDevice.ManagementServer.URL");
+		this.username = reader
+				.read("InternetGatewayDevice.ManagementServer.Username");
+		this.password = reader
+				.read("InternetGatewayDevice.ManagementServer.Password");
 	}
 
 	public int init() {
@@ -44,7 +53,7 @@ public class CPEClient {
 		// Set authentication.
 		client.getState().setCredentials(
 				new AuthScope(AuthScope.ANY_HOST, 8080, AuthScope.ANY_REALM),
-				new UsernamePasswordCredentials("username", "password"));
+				new UsernamePasswordCredentials(username, password));
 		// Create a method instance.
 		GetMethod get = new GetMethod(URL);
 		// Tell the GET method to automatically handle authentication.
@@ -63,10 +72,11 @@ public class CPEClient {
 			Header[] header = get.getResponseHeaders();
 			for (Header head : header) {
 				System.out.println(head.getName() + ": " + head.getValue());
-//				gui.insertDate(head.getName() + ": " + head.getValue() + "\n");
+				// gui.insertDate(head.getName() + ": " + head.getValue() +
+				// "\n");
 				// gui.insertDate("**********************************************");
 			}
-//			gui.insertDate("**************************************************\n");
+			// gui.insertDate("**************************************************\n");
 			return status;
 		} catch (HttpException e) {
 			System.err.println("Fatal protocol violation: " + e.getMessage());
@@ -109,7 +119,7 @@ public class CPEClient {
 				try {
 					message = MessageFactory.newInstance().createMessage(null,
 							in);
-					 message.writeTo(System.out);
+					message.writeTo(System.out);
 
 				} catch (SOAPException e) {
 					System.err.println("error in client!");
@@ -121,10 +131,10 @@ public class CPEClient {
 				Header[] header = post.getResponseHeaders();
 				for (Header head : header) {
 					System.out.println(head.getName() + ": " + head.getValue());
-//					gui.insertDate(head.getName() + ": " + head.getValue()
-//							+ "\n");
+					// gui.insertDate(head.getName() + ": " + head.getValue()
+					// + "\n");
 				}
-//				gui.insertDate("**************************************************\n");
+				// gui.insertDate("**************************************************\n");
 				return null;
 			} else {
 				// in = conn();
@@ -153,7 +163,7 @@ public class CPEClient {
 					null, i);
 			message.writeTo(System.out);
 			System.out.println("");
-//			gui.insertDate(message.toString() + "\n");
+			// gui.insertDate(message.toString() + "\n");
 			i.close();
 		} catch (IOException e1) {
 			e1.printStackTrace();
@@ -176,42 +186,42 @@ public class CPEClient {
 			if (status == HttpStatus.SC_OK) {
 				in = post.getResponseBodyAsStream();
 				System.out.println("receiving message...");
-//				gui.insertState("receiving message...\n");
-//				 System.out.println(post.getResponseBodyAsString());
+				// gui.insertState("receiving message...\n");
+				// System.out.println(post.getResponseBodyAsString());
 				Header[] header = post.getResponseHeaders();
 				for (Header head : header) {
 					System.out.println(head.getName() + ": " + head.getValue());
-//					gui.insertDate(head.getName() + ": " + head.getValue()
-//							+ "\n");
+					// gui.insertDate(head.getName() + ": " + head.getValue()
+					// + "\n");
 				}
-//				gui.insertDate("**************************************************\n");
+				// gui.insertDate("**************************************************\n");
 				try {
 					message = MessageFactory.newInstance().createMessage(null,
 							in);
-					 message.writeTo(System.out);
+					message.writeTo(System.out);
 				} catch (SOAPException e) {
 					e.printStackTrace();
 				}
 				return message;
 			} else if (status == HttpStatus.SC_NO_CONTENT) {
 				System.out.println("Nothing more received!");
-//				gui.insertState("Nothing more received!\n");
+				// gui.insertState("Nothing more received!\n");
 				Header[] header = post.getResponseHeaders();
 				for (Header head : header) {
 					System.out.println(head.getName() + ": " + head.getValue());
-//					gui.insertDate(head.getName() + ": " + head.getValue()
-//							+ "\n");
+					// gui.insertDate(head.getName() + ": " + head.getValue()
+					// + "\n");
 				}
-//				gui.insertDate("**************************************************\n");
+				// gui.insertDate("**************************************************\n");
 				return null;
 			} else {
 				Header[] header = post.getResponseHeaders();
 				for (Header head : header) {
 					System.out.println(head.getName() + ": " + head.getValue());
-//					gui.insertDate(head.getName() + ": " + head.getValue()
-//							+ "\n");
+					// gui.insertDate(head.getName() + ": " + head.getValue()
+					// + "\n");
 				}
-//				gui.insertDate("**************************************************\n");
+				// gui.insertDate("**************************************************\n");
 				System.out.println(status);
 				// in = send(msg);
 				return null;
@@ -236,8 +246,10 @@ public class CPEClient {
 			URL = method.getResponseHeader("NewURL").getValue();
 	}
 
-//	private CPEFrame gui;
-	public static String URL;
+	// private CPEFrame gui;
+	private String username;
+	private String password;
+	public String URL = "http://localhost:8080/ACS/ACSServlet";
 	public static HttpClient client;
 
 }
