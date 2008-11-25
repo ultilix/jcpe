@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Data xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<InternetGatewayDevice>
+	<DeviceSummary Write="true">add value</DeviceSummary>
+	<DeviceInfo>
+		<Manufacturer xsi:type="xsd:string(64)"></Manufacturer>
+		<ManufacturerOUI xsi:type="xsd:string(6)">testReceive</ManufacturerOUI>
+		<ProductClass xsi:type="xsd:string(64)">add value</ProductClass>
+		<SerialNumber xsi:type="xsd:string(64)">add value</SerialNumber>
+		<SpecVersion xsi:type="xsd:string(16)">add value</SpecVersion>
+		<HardwareVersion xsi:type="xsd:string(64)">add value</HardwareVersion>
+		<SoftwareVersion xsi:type="xsd:string(64)">add value</SoftwareVersion>
+		<ProvisioningCode xsi:type="xsd:string(64)">add value</ProvisioningCode>
+	</DeviceInfo>
+	<ManagementServer>
+		<URL xsi:type="xsd:string(256)" Write="true">http://localhost:8080/ACS/ACSServlet</URL>
+		<Username xsi:type="xsd:string(256)" Write="true">add value</Username>
+		<Password xsi:type="xsd:string(256)" Write="true">add value</Password>
+		<PeriodicInformEnable xsi:type="xsd:boolean" Write="true">true</PeriodicInformEnable>
+		<PeriodicInformInterval xsi:type="xsd:unsignedInt[1:]" Write="true"></PeriodicInformInterval>
+		<PeriodicInformTime xsi:type="xsd:dateTime" Write="true"></PeriodicInformTime>
+		<ConnectionRequestURL xsi:type="xsd:string(256)">add value</ConnectionRequestURL>
+		<ParameterKey xsi:type="xsd:string(32)">add value</ParameterKey>
+	</ManagementServer>
+</InternetGatewayDevice>
+</Data>
