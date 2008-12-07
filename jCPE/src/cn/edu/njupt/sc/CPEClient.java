@@ -22,6 +22,7 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
+import cn.edu.njupt.sc.data.DataReader;
 import cn.edu.njupt.sc.data.TreeDataReader;
 
 //import cn.edu.njupt.sc.GUI.CPEFrame;
@@ -39,7 +40,8 @@ public class CPEClient {
 	// }
 	public CPEClient() {
 
-		TreeDataReader reader = new TreeDataReader();
+		DataReader reader = new TreeDataReader();
+//		DataReader reader = new TreePullReader();
 		reader.setSource("Data.xml");
 		this.URL = reader.read("InternetGatewayDevice.ManagementServer.URL");
 		this.username = reader

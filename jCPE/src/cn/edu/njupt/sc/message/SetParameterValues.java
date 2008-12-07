@@ -12,6 +12,7 @@ import cn.edu.njupt.sc.data.DataReader;
 import cn.edu.njupt.sc.data.DataWriter;
 import cn.edu.njupt.sc.data.TreeDataReader;
 import cn.edu.njupt.sc.data.TreeDataWriter;
+import cn.edu.njupt.sc.data.TreePullWriter;
 
 public class SetParameterValues extends Message {
 
@@ -21,10 +22,10 @@ public class SetParameterValues extends Message {
 
 	}	
 
-	///*
+	
 	/**
 	 * This method is just used for demonstrate in GUI.  
-	 */
+	 *//*
 	@Override 
 	  protected NameValue[] parseBody(SOAPBodyElement body, SOAPFactory f)throws SOAPException { 
 	  Node parameterList=body.getFirstChild(); 
@@ -41,8 +42,8 @@ public class SetParameterValues extends Message {
 	  gui.insertDate("**************************************************\n");
 	  return null;
 	  }
-	 //*/
-	 /*
+	 */
+	// /*
 	@Override
 	protected NameValue[] parseBody(SOAPBodyElement body, SOAPFactory f)
 			throws SOAPException {
@@ -50,19 +51,24 @@ public class SetParameterValues extends Message {
 		Node parameterList = body.getFirstChild();
 		NodeList nodeList = parameterList.getChildNodes();
 		int l = nodeList.getLength() ;
+		DataWriter writer = new TreeDataWriter();
+//		DataWriter writer= new TreePullWriter();
+		
 		for (int i = 0; i < l; i++) {
 			Node ParameterValueStruct = nodeList.item(i);
 			String parameter = ParameterValueStruct.getChildNodes().item(0)
 					.getTextContent().trim();
 			String value = ParameterValueStruct.getChildNodes().item(1)
-					.getTextContent().trim();
-			DataWriter writer = new TreeDataWriter();
+					.getTextContent().trim();			
 			writer.setSource("Data.xml");
 			writer.update(parameter, value);
+			
 		}
+		writer.save();
+		writer.close();
 		return null;
 	}
-	 */
+	 //*/
 
 	@Override
 	protected void createBody(SOAPBodyElement body, SOAPFactory spf,

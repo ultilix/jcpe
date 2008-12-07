@@ -41,6 +41,18 @@ public interface DataWriter {
 	public int delet(String arg);
 
 	/**
+	 * Save modification into data file.
+	 * 
+	 * @return 0 if save successfully, or -1 if fail.
+	 */
+	public int save();
+
+	/**
+	 * Close this writer.
+	 */
+	public void close();
+
+	/**
 	 * Set data file source from String object.
 	 * 
 	 * @param file
