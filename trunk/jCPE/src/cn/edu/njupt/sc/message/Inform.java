@@ -10,8 +10,10 @@ import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPFactory;
 
+import cn.edu.njupt.sc.data.DataReader;
 import cn.edu.njupt.sc.data.InformData;
 import cn.edu.njupt.sc.data.TreeDataReader;
+import cn.edu.njupt.sc.data.TreePullReader;
 
 public class Inform extends Message {
 
@@ -94,7 +96,8 @@ public class Inform extends Message {
 		// Obtain the data file.
 		File file = new File("Data.xml");
 		// Create a DataReader to parse the data file.
-		TreeDataReader reader = new TreeDataReader(file);
+		DataReader reader = new TreeDataReader(file);
+//		DataReader reader = new TreePullReader(file);
 		// Creater a InformData to get the specific parameter list.
 		InformData informData = new InformData("InformData.xml");
 		// Fill "names" and "values" lists which are used to create

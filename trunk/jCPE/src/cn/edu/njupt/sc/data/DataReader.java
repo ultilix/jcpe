@@ -30,7 +30,7 @@ public interface DataReader {
 	 * 
 	 * @param arg
 	 *            parameter path.
-	 * @return parameter's value;This method does not return null.
+	 * @return the value of parameter;This method does not return null.
 	 */
 	public String read(String arg);
 
@@ -39,7 +39,9 @@ public interface DataReader {
 	 * 
 	 * @param arg
 	 *            parameter path
-	 * @return attribute value
+	 * @return the attribute value for the attribute with the given name, or
+	 *         null if there is no such attribute, or the empty string if the
+	 *         attribute value is empty.
 	 */
 	public String readAttribute(String arg, String attribute);
 }

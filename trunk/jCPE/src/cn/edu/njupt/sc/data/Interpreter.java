@@ -3,6 +3,7 @@
  */
 package cn.edu.njupt.sc.data;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,8 +19,8 @@ public class Interpreter {
 	 * @param arg
 	 * @return
 	 */
-	public List Command2List(String arg) {
-		return null;
+	public List<String> Command2List(String arg) {
+		return Arrays.asList(this.Command2String(arg));
 	}
 
 	/**
