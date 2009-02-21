@@ -7,6 +7,8 @@ package cn.edu.njupt.sc.GUI;
 
 import java.awt.EventQueue;
 
+import cn.edu.njupt.sc.CPECore;
+
 //import cn.edu.njupt.sc.CPECore;
 
 /**
@@ -20,12 +22,14 @@ public class Main {
      */
     public static void main(String[] args) {
         
-    	EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CPEFrame().setVisible(true);
-            }
-        });
+//    	EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new CPEFrame().setVisible(true);
+//            }
+//        });
 //    	new CPECore().turnOn();
+    	CPECore core = new CPECore();
+		core.turnOn();
     }
 
 }

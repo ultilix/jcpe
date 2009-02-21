@@ -7,12 +7,8 @@ import javax.xml.soap.SOAPFactory;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import cn.edu.njupt.sc.GUI.CPEFrame;
-import cn.edu.njupt.sc.data.DataReader;
 import cn.edu.njupt.sc.data.DataWriter;
-import cn.edu.njupt.sc.data.TreeDataReader;
 import cn.edu.njupt.sc.data.TreeDataWriter;
-import cn.edu.njupt.sc.data.TreePullWriter;
 
 public class SetParameterValues extends Message {
 
