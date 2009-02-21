@@ -13,7 +13,6 @@ import javax.xml.soap.SOAPFactory;
 import cn.edu.njupt.sc.data.DataReader;
 import cn.edu.njupt.sc.data.InformData;
 import cn.edu.njupt.sc.data.TreeDataReader;
-import cn.edu.njupt.sc.data.TreePullReader;
 
 public class Inform extends Message {
 
